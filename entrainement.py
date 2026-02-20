@@ -13,20 +13,18 @@ from statsmodels.formula.api import ols
     G : Semaine de match ? Match le dimanche ou repos le dimanche (1 ou -1)
     Presence : Moyenne des joueurs présents à l'entrainement sur ces jours-là
 '''
-# Replace 'your_file.xlsx' with the path to your Excel file
+# Lecture du fichier Excel contenant les données de présence
 df = pd.read_excel("releves_presence.xlsx")
 
 print(df)
-
+# Définition de la formule du modèle linéaire avec les interactions
 formula = 'Presence ~ D + W + T + G + D:W + D:T + D:G + W:T + W:G + T:G'
-# # Define the formula for the model
-# formula = 'Produits ~ T + C + K + T:C + T:K'
 
-# # Fit the model
+# Fit model
 model = ols(formula, data=df).fit()
 
 
-# # Create a 3D plot function to visualize both measured and predicted values
+# Creation du graph 3D
 def plot_3d_predictions(model, df, factor_x, factor_y, response_var, num_points=50):
     fig = plt.figure(figsize=(10, 7))
     ax = fig.add_subplot(111, projection='3d')
@@ -59,7 +57,7 @@ def plot_3d_predictions(model, df, factor_x, factor_y, response_var, num_points=
     ax.legend()
     plt.savefig(f"plots/3d_plot_{factor_x}_{factor_y}.jpeg", dpi=600)
 
-# Call the function with your dataframe and model
+# Appel de la fonction pour chaque paire de facteurs
 factor_list = ['T', 'W', 'D', 'G']
 for i, factor_x in enumerate(factor_list):
     for j, factor_y in enumerate(factor_list):
