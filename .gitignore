@@ -1,5 +1,6 @@
-report/Rapport.aux
-report/Rapport.log
-report/Rapport.out
-report/Rapport.toc
+report/*.aux
+report/*.log
+report/*.out
+report/*.toc
 report/image/
+report/*.pdf
