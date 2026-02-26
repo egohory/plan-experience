@@ -14,7 +14,7 @@ from statsmodels.formula.api import ols
     Presence : Moyenne des joueurs présents à l'entrainement sur ces jours-là
 '''
 # Lecture du fichier Excel contenant les données de présence
-df = pd.read_excel("releves_presence.xlsx")
+df = pd.read_excel("data_releves_presence.xlsx")
 
 print(df)
 # Définition de la formule du modèle linéaire avec les interactions
@@ -55,7 +55,7 @@ def plot_3d_predictions(model, df, factor_x, factor_y, response_var, num_points=
     ax.set_zlabel(response_var)
     ax.set_title(f"Représentation 3D de {response_var} vs {factor_x} et {factor_y}")
     ax.legend()
-    plt.savefig(f"plots/3d_plot_{factor_x}_{factor_y}.jpeg", dpi=600)
+    plt.savefig(f"report/plots/3d_plot_{factor_x}_{factor_y}.jpeg", dpi=600)
 
 # Appel de la fonction pour chaque paire de facteurs
 factor_list = ['T', 'W', 'D', 'G']
