@@ -8,11 +8,39 @@
 \usepackage{graphicx}
 \usepackage{tcolorbox}
 \usepackage[export]{adjustbox}
+\usepackage{listings}
+\usepackage{attachfile}
 \hypersetup{
   colorlinks=true,
   linkcolor=black,
   urlcolor=blue
 }
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
 
 
 \begin{document}
@@ -23,113 +51,127 @@
 \tableofcontents
 
 \chapter{Introduction}
-\section{Contexte de l'expérience}
-Cette étude s'inscrit dans le cours de \emph{Plan d'expérience} de ma deuxième année d'ingénieur en formation continue à Phelma. Il nous a été demandé de prévoir et mener un plan d'expérience sur le sujet de notre choix. \paragraph{}Aussi, en tant que joueur de rugby à XV pour le club de rugby de Pont de Claix, l'US 2 Ponts, j'ai décidé de mener une étude sur le taux de présence des joueurs aux entrainements en fonction de critères \emph{évidents}.Les joueurs sont tenus d'assister, autant que faire ce peut, à deux entrainements par semaine, le mardi et le jeudi soir (de 19h30 à 21h). Le dimanche un match du championnat dans lequel évolue l'équipe peut être disputer pour classer l'équipe dans sa poule et décider de sa participation, ou non, aux phases finales de la compétition Régionale 1. L'enjeu pour le club, est de se classer le plus haut de participer à ces phases finales, de décrocher un titre et/ou de monter de division pour la saison prochaine afin d'attirer joueurs et sponsors. Il y a donc, un fort besoin de présence aux entrainements afin de structurer une équipe capable de relever ces défis. \paragraph{}Ces faits définis, il apparait clair que comprendre les facteurs qui peuvent influer sur la quantité de joueurs aux entrainements est, donc, primordial. C'est pourquoi, je décrirais tout au long de ce document, la méthode utilisée, les résultats mesurés et les analyses et/ou conclusions que l'on peut en tirer.
-\section{Portée de l'expérience}
-Comme implicité dans la partie précédente, cette étude se concentre sur l'effectif sénior de l'US 2 Ponts sur la saison actuelle, 2025-2026.\paragraph{} Ainsi, l'étude couvre la période de la pré-saison à aujourd'hui et concerne un effectif total de joueurs avoisinant 70. \paragraph{}\textbf{En détail :}\begin{itemize}\item Période de mi-aout 2025 à mi-février 2026 à raison de deux entrainements par semaine (sauf période de repos et vacances) soit 47 entrainements \item Effectif total de 74 joueurs\end{itemize} \paragraph{}\textbf{Les critères/facteurs choisient pour ces expériences sont : }\begin{itemize}\item la météo\begin{itemize}\item le temps observé\item la température mesurée\end{itemize}\item le jour de l'entrainement\item si un match est prévu en fin de semaine ou si c'est une semaine de repos\end{itemize}
-\chapter{Méthode}
-\section{Collecte des données}
-\subsection{Nombre de joueurs}
-Connaitre le nombre de personne s'étant rendu à chaque entrainement fut simple. En effet, un pointage, tenu par les bénévoles du club, est effectué scrupuleusement pour chaque entrainement. Il permet aux encadrants de l'équipe de connaitre le taux de présence de chacun et la situation de l'effectif. Ce document, anonymisé, est disponible à la consultation en \emph{Annexe 1 : \href{run: annexes/Entrainement\_saison\_2025-2026\_US2Ponts.xls}{Présence aux entrainements 2025-2026}}
-\subsection{Météo}
-Pour la météo, il a suffit de récupérer les données météorologiques enregistrées. Celles-ci sont facilement trouvable sur internet. Pour les jours de temps mitigé, j'ai choisi de considéré qu'il faisait beau si plus de la moitié de la journée (sur sa période d'ensolleillement en fonction de la saison) était dégagée ou nuageuse sans pluie. En effet, bien que l'entrainement ait lieu le soir j'ai considéré que la prise de décision sur une participation à l'entrainement se faisait pendant la journée et non à 19h. Pour la température, j'ai choisi de sélectionner l'extremum dans la journée, pour la même raison. Voir en source (chapitre \ref{sources}) pour le lien vers le site utilisé.
-\subsection{Match}
-Le calendrier des matchs est facilement accessiblement via les sites de la fédération française de rugby (lien en chapitre \ref{sources}). Un match le 1er février fait considérer les entrainements du jeudi 29 et mardi 27 janvier comme étant des préparations de match (G = oui dans le plan factoriel, figure \ref{fig:figure1}).
-\section{Démarche}
-Afin d'analyser les résultats obtenus, les expériences seront mises en forme dans un plan factiorel. Dans un second temps, les données de ce plan seront codées.\paragraph{}Les variances à un facteur seront analysés par Excel pour chaque variable. Ainsi nous pourrons rechercher d'éventuels liens direct entre un facteur et le résultat ou exclure les variables qui ne semblent pas pertinentes. A cette occasion nous ferons des tests d'hypothèses. Celles-ci seront définis au début de la partie \ref{varianceun}\paragraph{}Puis, nous utiliserons un script python  afin de généré des graphiques de variances à deux facteurs pour permettre une analyse visuelle des influences des facteurs deux à deux. Ce script python est accessible en \emph{Annexe 2 : \ref{annexe2}}
-\chapter{Résultats}
-\section{Plan Factoriel}\label{pf}
-Les facteurs sont nommés de la façon suivante : \begin{itemize} \item Jour de la semaine : D\item Climat : W\item Température : T\item Match le week-end : G\end{itemize}
-On note alors, le tableau du plan factoriel tel que :
-\begin{figure}[H]
-\includegraphics[width=1.2\textwidth, center]{images/PF.png}
-\caption{Plan factoriel des expériences menées}
-\label{fig:figure1}
-\end{figure}
-Ensuite, on peut coder les entrées pour les rendre exploitable pour les calculs et analyses.
-\begin{figure}[H]
-\includegraphics[width=0.8\textwidth, center]{images/code.jpg}
-\caption{Codage des paramètres}\label{fig:figure2}
-\end{figure}
-On obtient alors le plan factoriel codé suivant :
-\begin{figure}[H]
-\includegraphics[width=1.2\textwidth, center]{images/pf_code.jpg}
-\caption{Plan factoriel codé}\label{fig:figure3}
-\end{figure}
-\section{Analyse des variances à un facteur et hypothèses}\label{varianceun}
-Pour cette partie, nous lancerons des analyses de variances à un facteur sur toutes les variables testées par ces expériences pour essayer de trouver les facteurs les plus impactant sur le taux de présence à l'entrainement. \paragraph{}On vérifiera aussi la valeur P de chaque paramètres pour tester l'hypothèse que le paramètre étudié à un impact direct qur le taux de présence. Il faudra alors, s'assurer que la valeur P (aussi noté \emph{Probabilité} ou \emph{P value}) soit inférieur à 5\% pour pouvoir rejeter l'Hypothèse Nulle qui stipule que lien entre paramètre et résultat n'est pas évident. Voici, les quatres hypothèses qui seront testées :
-\begin{enumerate}\item H1 : Il existe un lien direct entre la présence à l'entrainement et le jour d'entrainement\item H2 : Il existe un lien direct entre le temps au jour de l'entrainement et la présence à l'entrainement\item H3 : Il existe un lien direct entre la température et la présence à l'entrainement\item H4 : Il existe un lien direct entre la présence ou l'absence d'un match le week-end sur la présence à l'entrainement de cette même semaine.
-\end{enumerate}
-\subsection{Jour d'entrainement}
-Commençons par l'analyse de l'impact du jour d'entrainement sur la présence aux entrainements.
-\begin{figure}[H]
-\includegraphics[width=1\textwidth, center]{images/v_d.jpg}
-\caption{Analyse des résultats pour le jour d'entrainement}\label{fig:figure4}
-\end{figure}
-On remarque directement que la présence à l'entrainement est supérieur les jeudis au mardis. De plus, la variance de présence des jeudis et bien plus petite que celle des mardis. Ce qui signifie que, non seulement il y a plus de monde aux entrainements les jeudis mais aussi que la présence est plus stable ces jours en comparaison aux mardis. \paragraph{}En revanche, la valeur P étant supérieur à 5\% (\emph{Probabilité = 16,04\%}) on ne peut donc pas rejeter l'Hypothèse nulle ce qui signifie qu'il n'y a pas suffisament de preuve pour pouvoir affirmer qu'il y ait une différence significative entre le mardi et le jeudi sur le taux de présence aux entrainements. On peut alors dire, qu'il semble avoir un impact du jour de la semaine sur le nombre de joueur aux entrainements mais que cet impact, à lui seul, n'est pas suffisament significatif.
-\subsection{Climat/Temps observé}\label{climat}
-\begin{figure}[H]
-\includegraphics[width=1\textwidth, center]{images/v_w.jpg}
-\caption{Analyse des résultats pour le climat/temps observé}\label{fig:figure5}
-\end{figure}
-De la même manière que pour l'analyse précédente, on observe que la valeur P est supérieure à 5\%, ainsi on ne pourra pas conclure d'un lien direct, clair et évident entre le temps du jour de l'entrainement et la présence à l'entrainement. On remarque, tout de même, que la variance part temps pluvieux est très élevée en comparaison des jours de beau temps, ce qui signifie que d'autres facteurs doivent influé sur la présence les jours de pluies tandis que les jours de beaux temps, la présence semble plus stable. 
-\subsection{Température}\label{temp}
-\begin{figure}[H]
-\includegraphics[width=1\textwidth, center]{images/v_t.jpg}
-\caption{Analyse des résultats pour la température}\label{fig:figure6}
-\end{figure}
-L'analyse de la température seule ne montre rien de concluant. La valeur P est haute, aucune différence notable entre les moyennes et les variances des deux états de la température. De ce fait, il est impossible de conclure a un impact significatif de la température sur la présence aux entrainements.
-\subsection{Match}
-\begin{figure}[H]
-\includegraphics[width=1\textwidth, center]{images/v_m.jpg}
-\caption{Analyse des résultats pour les semaines de match ou non}\label{fig:figure7}
-\end{figure}
-On voit que \textbf{la valeur P est inférieur à 5\%} ce qui prouve que l'hypothèse H4 est vérifiée. Il y a donc un lien direct entre la présence aux entrainements et les matchs. Au vu des moyennes, il semblerait que l'on puisse admettre que la présence aux entrainements est plus grande et est plus stable les semaines de match. 
-\section{Analyse à deux facteurs}
-\subsection{Météo complète}
-Dans cette partie nous observerons la présence à l'entrainement en fonction des conditions météo complète (température et temps). \paragraph{}Nous avons déterminé, dans la partie précédente (voir partie \label{climat} et \label{temp}) que l'on ne pouvons pas établir de lien entre l'une de ces variables et la présence aux entrainements. Cependant, qu'en est-il d'un lien combiné  entre ces deux variables et la présence ? \paragraph{}Cette question nous permet de vérifier si on observer des différences de présence en été ou en hiver. 
-Ainsi, grâce aux données récoltés et au script python on peut générer le graphique suivant :
-\begin{figure}[H]
-\includegraphics[width=1\textwidth, center]{plots/3d\_plot\_T\_W.jpeg}
-\caption{Influence des conditions météo T et W sur la présence à l'entrainement}\label{fig:figure8}
-\end{figure}
-Graphiquement, on voit que, effectivement il semble y avoir plus de monde aux entrainements lorsqu'il fait beau et chaud (T = 1, W = 1) en comparaison des jours froids et pluvieux ou même simplement pluvieux. Cependant, on note que les points des résultats d'expériences des jours pluvieux (W = -1) sont très éparpillés. Ce qui signifie qu'un ou plusieurs autre(s) paramètre(s) doit(vent) influer sur les résultats par temps pluvieux.
-\subsection{Intempéries et jour d'entrainement}
-On vient de voir que les jours pluvieux donnent des résultats qui semblent influencés par un autre paramètre. C'est pourquoi, nous allons regarder les moyennes de présence en fonction des intempéries (W) et du jour de la semaine (D). 
-\begin{figure}[H]
-\includegraphics[width=1\textwidth, center]{plots/3d\_plot\_W\_D.jpeg}
-\caption{Influence des intempéries W et du Jour d'entrainement D sur la présence à l'entrainement}\label{fig:figure9}
-\end{figure}
-On voit que les résultats de moyenne de présence sont relativement stables les jours de beaux temps (W =1) mais les mardis pluvieux présentent des résultats très variés avec notamment 2 expériences très faibles, et une correcte (aux alentours de 32 personnes)
-\subsection{Jour d'entrainement et Match}
-Nous allons maintenant nous interesser à la présence aux entrainements en fonction des semaines de match (G) et du jour de la semaine (D). L'intérêt est d'observer si les joueurs sont plus ou moins présents pour préparer les matchs et si il y a une différence entre un jeudi et un mardi. 
-\begin{figure}[H]
-\includegraphics[width=1\textwidth, center]{plots/3d\_plot\_D\_G.jpeg}
-\caption{Influence du Jour d'entrainement D et du Match le week-end G sur la présence à l'entrainement}\label{fig:figure10}
-\end{figure}
-On pouvait s'y attendre mais on remarque que, en moyenne, les mardis sans matchs sont délaissés par les joueurs tandis que les jeudis d'avant matchs sont plébiscités. Observation plus surprenante, il apparait que les jeudis sans matchs comptent pratiquement autant de joueurs que les mardis de préparation de match et ce, avec la même stabilité (dispertions des points similaires).
-\subsection{Intempéries et préparation de match}
-Nous venons de voir que les entrainements du mardi hors préparation de match semblaient délaissés (en moyenne). On a pu aussi constater que les intempéries semblaient impactés la présence sans pouvoir distinguer de lien évident mais que les entrainements des mardis pluivieux semblaient moins interesser les joueurs que les autres jours sous d'autres conditions. Nous allons alors, désormais voir l'influence d'une préparation de match (G) et des intempéries (W) sur la présence aux entrainements. 
-\begin{figure}[H]
-\includegraphics[width=1\textwidth, center]{plots/3d\_plot\_W\_G.jpeg}
-\caption{Influence du Climat/Intempéries W et du Match le week-end G sur la présence à l'entrainement}\label{fig:figure11}
-\end{figure}
-On voit que la combinaison du mauvais temps (W = -1) et de l'absence de jour de match (G = -1) présente les pires résultats moyens avec une variance élevée. Les trois autres combinaisons donnent des résultats similaires avec une variance un peu plus élevée pour le mauvais temps. \paragraph{}Il semble donc correct de dire que les intempéries, cumulées avec d'autres facteurs est un facteur déterminant sur la présence à l'entrainement.
-\chapter{Conclusion}
-Grâce aux résultats de ce plan d'expérience, on a pu démontrer que seul un match le week-end est déterminant sur la présence à l'entrainement en tant que paramètre seul. Cependant, on a pu montrer que les intempéries sont un facteurs non déterminant en soi mais aggravant en combinaison à d'autres facteurs tel que le jour d'entrainement, si ce sont des préparations de match ou non ou s'il fait froid. 
-\paragraph{}
-On doit néanmoins, prendre du recul sur cette étude car les seuils choisis pour le temps et la météo peuvent faire l'objet de débats. 
-Enfin, et pour clore cette étude, on peut se questionner sur les facteurs hors de portée de cette étude. On peut, notamment, penser à l'influence des vacances scolaires, de l'avancé dans la saison, des présences en fonction des postes de chaque joueur ou bien des résultats de l'équipe. Dans une prochaine étude sur le même sujet, il pourrait aussi être interressant d'étudier ces phénomènes avec d'autres équipes, de les comparer et d'augmenter les échantillions et expériences ou bien même de faire une comparaison avec l'année précédente, lors de laquelle des primes de matchs étaient versées aux joueurs en fonction de leurs présences aux entrainements mais où les résultats sportifs étaient moins probant.
+  \section{Contexte de l'expérience}
+  Cette étude s'inscrit dans le cours de \emph{Plan d'expérience} de ma deuxième année d'ingénieur en formation continue à Phelma. Il nous a été demandé de prévoir et mener un plan d'expérience sur le sujet de notre choix. \paragraph{}Aussi, en tant que joueur de rugby à XV pour le club de rugby de Pont de Claix, l'US 2 Ponts, j'ai décidé de mener une étude sur le taux de présence des joueurs aux entrainements en fonction de critères \emph{évidents}.Les joueurs sont tenus d'assister, autant que faire ce peut, à deux entrainements par semaine, le mardi et le jeudi soir (de 19h30 à 21h). Le dimanche un match du championnat dans lequel évolue l'équipe peut être disputer pour classer l'équipe dans sa poule et décider de sa participation, ou non, aux phases finales de la compétition Régionale 1. L'enjeu pour le club, est de se classer le plus haut de participer à ces phases finales, de décrocher un titre et/ou de monter de division pour la saison prochaine afin d'attirer joueurs et sponsors. Il y a donc, un fort besoin de présence aux entrainements afin de structurer une équipe capable de relever ces défis. \paragraph{}Ces faits définis, il apparait clair que comprendre les facteurs qui peuvent influer sur la quantité de joueurs aux entrainements est, donc, primordial. C'est pourquoi, je décrirais tout au long de ce document, la méthode utilisée, les résultats mesurés et les analyses et/ou conclusions que l'on peut en tirer.
+  \section{Portée de l'expérience}
+  Comme implicité dans la partie précédente, cette étude se concentre sur l'effectif sénior de l'US 2 Ponts sur la saison actuelle, 2025-2026.\paragraph{} Ainsi, l'étude couvre la période de la pré-saison à aujourd'hui et concerne un effectif total de joueurs avoisinant 70. \paragraph{}\textbf{En détail :}\begin{itemize}\item Période de mi-aout 2025 à mi-février 2026 à raison de deux entrainements par semaine (sauf période de repos et vacances) soit 47 entrainements \item Effectif total de 74 joueurs\end{itemize} \paragraph{}\textbf{Les critères/facteurs choisient pour ces expériences sont : }\begin{itemize}\item la météo\begin{itemize}\item le temps observé\item la température mesurée\end{itemize}\item le jour de l'entrainement\item si un match est prévu en fin de semaine ou si c'est une semaine de repos\end{itemize}
 
-\chapter{Sources}\label{sources}
-\begin{enumerate}
-	\item \href{https://fr.weatherspark.com/h/m/51913/2025/8/M\%C3\%A9t\%C3\%A9o-historique-en-ao\%C3\%BBt-2025-\%C3\%A0-Grenoble-France}{Relevés Météorologiques : fr.weatherspark.com}
-	\item \href{https://monclubhouse.ffr.fr/clubs/u-s-deux-ponts/competitions/auvergne-rhone-alpes-regionale-1-championnat-territorial/qualification-44337/calendrier-resultats}{FFR : US 2 Ponts - Calendrier}
-	\item \href{https://github.com/egohory/plan-experience}{Github : projet python de génération des graphiques ANOVA 2}
-\end{enumerate}
+\chapter{Méthode}
+  \section{Collecte des données}
+  \subsection{Nombre de joueurs}
+  Connaitre le nombre de personne s'étant rendu à chaque entrainement fut simple. En effet, un pointage, tenu par les bénévoles du club, est effectué scrupuleusement pour chaque entrainement. Il permet aux encadrants de l'équipe de connaitre le taux de présence de chacun et la situation de l'effectif. Ce document, anonymisé, est disponible à la consultation en \emph{Annexe 1 : \ref{annexe1}}
+  \subsection{Météo}
+  Pour la météo, il a suffit de récupérer les données météorologiques enregistrées. Celles-ci sont facilement trouvable sur internet. Pour les jours de temps mitigé, j'ai choisi de considéré qu'il faisait beau si plus de la moitié de la journée (sur sa période d'ensolleillement en fonction de la saison) était dégagée ou nuageuse sans pluie. En effet, bien que l'entrainement ait lieu le soir j'ai considéré que la prise de décision sur une participation à l'entrainement se faisait pendant la journée et non à 19h. Pour la température, j'ai choisi de sélectionner l'extremum dans la journée, pour la même raison. Voir en source (chapitre \ref{sources}) pour le lien vers le site utilisé.
+  \subsection{Match}
+  Le calendrier des matchs est facilement accessiblement via les sites de la fédération française de rugby (lien en chapitre \ref{sources}). Un match le 1er février fait considérer les entrainements du jeudi 29 et mardi 27 janvier comme étant des préparations de match (G = oui dans le plan factoriel, figure \ref{fig:figure1}).
+  \section{Démarche}
+  Afin d'analyser les résultats obtenus, les expériences seront mises en forme dans un plan factiorel. Dans un second temps, les données de ce plan seront codées.\paragraph{}Les variances à un facteur seront analysés par Excel pour chaque variable. Ainsi nous pourrons rechercher d'éventuels liens direct entre un facteur et le résultat ou exclure les variables qui ne semblent pas pertinentes. A cette occasion nous ferons des tests d'hypothèses. Celles-ci seront définis au début de la partie \ref{varianceun}\paragraph{}Puis, nous utiliserons un script python  afin de généré des graphiques de variances à deux facteurs pour permettre une analyse visuelle des influences des facteurs deux à deux. Ce script python est accessible en \emph{Annexe 2 : \ref{annexe2}}
+
+  \chapter{Résultats}
+  \section{Plan Factoriel}\label{pf}
+  Les facteurs sont nommés de la façon suivante : \begin{itemize} \item Jour de la semaine : D\item Climat : W\item Température : T\item Match le week-end : G\end{itemize}
+  On note alors, le tableau du plan factoriel tel que :
+  \begin{figure}[H]
+  \includegraphics[width=1.2\textwidth, center]{images/PF.png}
+  \caption{Plan factoriel des expériences menées}
+  \label{fig:figure1}
+  \end{figure}
+  Ensuite, on peut coder les entrées pour les rendre exploitable pour les calculs et analyses.
+  \begin{figure}[H]
+  \includegraphics[width=0.8\textwidth, center]{images/code.jpg}
+  \caption{Codage des paramètres}\label{fig:figure2}
+  \end{figure}
+  On obtient alors le plan factoriel codé suivant :
+  \begin{figure}[H]
+  \includegraphics[width=1.2\textwidth, center]{images/pf_code.jpg}
+  \caption{Plan factoriel codé}\label{fig:figure3}
+  \end{figure}
+  \section{Analyse des variances à un facteur et hypothèses}\label{varianceun}
+  Pour cette partie, nous lancerons des analyses de variances à un facteur sur toutes les variables testées par ces expériences pour essayer de trouver les facteurs les plus impactant sur le taux de présence à l'entrainement. \paragraph{}On vérifiera aussi la valeur P de chaque paramètres pour tester l'hypothèse que le paramètre étudié à un impact direct qur le taux de présence. Il faudra alors, s'assurer que la valeur P (aussi noté \emph{Probabilité} ou \emph{P value}) soit inférieur à 5\% pour pouvoir rejeter l'Hypothèse Nulle qui stipule que lien entre paramètre et résultat n'est pas évident. Voici, les quatres hypothèses qui seront testées :
+  \begin{enumerate}\item H1 : Il existe un lien direct entre la présence à l'entrainement et le jour d'entrainement\item H2 : Il existe un lien direct entre le temps au jour de l'entrainement et la présence à l'entrainement\item H3 : Il existe un lien direct entre la température et la présence à l'entrainement\item H4 : Il existe un lien direct entre la présence ou l'absence d'un match le week-end sur la présence à l'entrainement de cette même semaine.
+  \end{enumerate}
+  \subsection{Jour d'entrainement}
+  Commençons par l'analyse de l'impact du jour d'entrainement sur la présence aux entrainements.
+  \begin{figure}[H]
+  \includegraphics[width=1\textwidth, center]{images/v_d.jpg}
+  \caption{Analyse des résultats pour le jour d'entrainement}\label{fig:figure4}
+  \end{figure}
+  On remarque directement que la présence à l'entrainement est supérieur les jeudis au mardis. De plus, la variance de présence des jeudis et bien plus petite que celle des mardis. Ce qui signifie que, non seulement il y a plus de monde aux entrainements les jeudis mais aussi que la présence est plus stable ces jours en comparaison aux mardis. \paragraph{}En revanche, la valeur P étant supérieur à 5\% (\emph{Probabilité = 16,04\%}) on ne peut donc pas rejeter l'Hypothèse nulle ce qui signifie qu'il n'y a pas suffisament de preuve pour pouvoir affirmer qu'il y ait une différence significative entre le mardi et le jeudi sur le taux de présence aux entrainements. On peut alors dire, qu'il semble avoir un impact du jour de la semaine sur le nombre de joueur aux entrainements mais que cet impact, à lui seul, n'est pas suffisament significatif.
+  \subsection{Climat/Temps observé}\label{climat}
+  \begin{figure}[H]
+  \includegraphics[width=1\textwidth, center]{images/v_w.jpg}
+  \caption{Analyse des résultats pour le climat/temps observé}\label{fig:figure5}
+  \end{figure}
+  De la même manière que pour l'analyse précédente, on observe que la valeur P est supérieure à 5\%, ainsi on ne pourra pas conclure d'un lien direct, clair et évident entre le temps du jour de l'entrainement et la présence à l'entrainement. On remarque, tout de même, que la variance part temps pluvieux est très élevée en comparaison des jours de beau temps, ce qui signifie que d'autres facteurs doivent influé sur la présence les jours de pluies tandis que les jours de beaux temps, la présence semble plus stable. 
+  \subsection{Température}\label{temp}
+  \begin{figure}[H]
+  \includegraphics[width=1\textwidth, center]{images/v_t.jpg}
+  \caption{Analyse des résultats pour la température}\label{fig:figure6}
+  \end{figure}
+  L'analyse de la température seule ne montre rien de concluant. La valeur P est haute, aucune différence notable entre les moyennes et les variances des deux états de la température. De ce fait, il est impossible de conclure a un impact significatif de la température sur la présence aux entrainements.
+  \subsection{Match}
+  \begin{figure}[H]
+  \includegraphics[width=1\textwidth, center]{images/v_m.jpg}
+  \caption{Analyse des résultats pour les semaines de match ou non}\label{fig:figure7}
+  \end{figure}
+  On voit que \textbf{la valeur P est inférieur à 5\%} ce qui prouve que l'hypothèse H4 est vérifiée. Il y a donc un lien direct entre la présence aux entrainements et les matchs. Au vu des moyennes, il semblerait que l'on puisse admettre que la présence aux entrainements est plus grande et est plus stable les semaines de match. 
+  \section{Analyse à deux facteurs}
+  \subsection{Météo complète}
+  Dans cette partie nous observerons la présence à l'entrainement en fonction des conditions météo complète (température et temps). \paragraph{}Nous avons déterminé, dans la partie précédente (voir partie \label{climat} et \label{temp}) que l'on ne pouvons pas établir de lien entre l'une de ces variables et la présence aux entrainements. Cependant, qu'en est-il d'un lien combiné  entre ces deux variables et la présence ? \paragraph{}Cette question nous permet de vérifier si on observer des différences de présence en été ou en hiver. 
+  Ainsi, grâce aux données récoltés et au script python on peut générer le graphique suivant :
+  \begin{figure}[H]
+  \includegraphics[width=1\textwidth, center]{plots/3d\_plot\_T\_W.jpeg}
+  \caption{Influence des conditions météo T et W sur la présence à l'entrainement}\label{fig:figure8}
+  \end{figure}
+  Graphiquement, on voit que, effectivement il semble y avoir plus de monde aux entrainements lorsqu'il fait beau et chaud (T = 1, W = 1) en comparaison des jours froids et pluvieux ou même simplement pluvieux. Cependant, on note que les points des résultats d'expériences des jours pluvieux (W = -1) sont très éparpillés. Ce qui signifie qu'un ou plusieurs autre(s) paramètre(s) doit(vent) influer sur les résultats par temps pluvieux.
+  \subsection{Intempéries et jour d'entrainement}
+  On vient de voir que les jours pluvieux donnent des résultats qui semblent influencés par un autre paramètre. C'est pourquoi, nous allons regarder les moyennes de présence en fonction des intempéries (W) et du jour de la semaine (D). 
+  \begin{figure}[H]
+  \includegraphics[width=1\textwidth, center]{plots/3d\_plot\_W\_D.jpeg}
+  \caption{Influence des intempéries W et du Jour d'entrainement D sur la présence à l'entrainement}\label{fig:figure9}
+  \end{figure}
+  On voit que les résultats de moyenne de présence sont relativement stables les jours de beaux temps (W =1) mais les mardis pluvieux présentent des résultats très variés avec notamment 2 expériences très faibles, et une correcte (aux alentours de 32 personnes)
+  \subsection{Jour d'entrainement et Match}
+  Nous allons maintenant nous interesser à la présence aux entrainements en fonction des semaines de match (G) et du jour de la semaine (D). L'intérêt est d'observer si les joueurs sont plus ou moins présents pour préparer les matchs et si il y a une différence entre un jeudi et un mardi. 
+  \begin{figure}[H]
+  \includegraphics[width=1\textwidth, center]{plots/3d\_plot\_D\_G.jpeg}
+  \caption{Influence du Jour d'entrainement D et du Match le week-end G sur la présence à l'entrainement}\label{fig:figure10}
+  \end{figure}
+  On pouvait s'y attendre mais on remarque que, en moyenne, les mardis sans matchs sont délaissés par les joueurs tandis que les jeudis d'avant matchs sont plébiscités. Observation plus surprenante, il apparait que les jeudis sans matchs comptent pratiquement autant de joueurs que les mardis de préparation de match et ce, avec la même stabilité (dispertions des points similaires).
+  \subsection{Intempéries et préparation de match}
+  Nous venons de voir que les entrainements du mardi hors préparation de match semblaient délaissés (en moyenne). On a pu aussi constater que les intempéries semblaient impactés la présence sans pouvoir distinguer de lien évident mais que les entrainements des mardis pluivieux semblaient moins interesser les joueurs que les autres jours sous d'autres conditions. Nous allons alors, désormais voir l'influence d'une préparation de match (G) et des intempéries (W) sur la présence aux entrainements. 
+  \begin{figure}[H]
+  \includegraphics[width=1\textwidth, center]{plots/3d\_plot\_W\_G.jpeg}
+  \caption{Influence du Climat/Intempéries W et du Match le week-end G sur la présence à l'entrainement}\label{fig:figure11}
+  \end{figure}
+  On voit que la combinaison du mauvais temps (W = -1) et de l'absence de jour de match (G = -1) présente les pires résultats moyens avec une variance élevée. Les trois autres combinaisons donnent des résultats similaires avec une variance un peu plus élevée pour le mauvais temps. \paragraph{}Il semble donc correct de dire que les intempéries, cumulées avec d'autres facteurs est un facteur déterminant sur la présence à l'entrainement.
+
+\chapter{Conclusion}
+  Grâce aux résultats de ce plan d'expérience, on a pu démontrer que seul un match le week-end est déterminant sur la présence à l'entrainement en tant que paramètre seul. Cependant, on a pu montrer que les intempéries sont un facteurs non déterminant en soi mais aggravant en combinaison à d'autres facteurs tel que le jour d'entrainement, si ce sont des préparations de match ou non ou s'il fait froid. 
+  \paragraph{}
+  On doit néanmoins, prendre du recul sur cette étude car les seuils choisis pour le temps et la météo peuvent faire l'objet de débats. 
+  Enfin, et pour clore cette étude, on peut se questionner sur les facteurs hors de portée de cette étude. On peut, notamment, penser à l'influence des vacances scolaires, de l'avancé dans la saison, des présences en fonction des postes de chaque joueur ou bien des résultats de l'équipe. Dans une prochaine étude sur le même sujet, il pourrait aussi être interressant d'étudier ces phénomènes avec d'autres équipes, de les comparer et d'augmenter les échantillions et expériences ou bien même de faire une comparaison avec l'année précédente, lors de laquelle des primes de matchs étaient versées aux joueurs en fonction de leurs présences aux entrainements mais où les résultats sportifs étaient moins probant.
 
 \chapter{Annexes}
-\section{Annexe 2 : Code Python}\label{annexe2}
-des trucs dans cette section
+  \section{Annexe 1 : Relevés}\label{annexe1}
+  Exemple de l'excel de travail des données (Voir source \ref{sources}) :
+  \begin{figure}[H]
+    \includegraphics[width=1\textwidth, center]{images/exemple\_releve\_presence.jpg}
+    \caption{Extract de l'Excel de pointage des joueurs à l'entrainement}\label{fig:figure12}
+    \end{figure}
+  \section{Annexe 2 : Code Python}\label{annexe2}
+  Code Python utilisé pour générer les graphiques (Voir git hub : \ref{sources}): 
+  \lstinputlisting[language=Python]{../entrainement.py}
+
+\chapter{Sources}\label{sources}
+  \begin{enumerate}
+    \item \href{https://fr.weatherspark.com/h/m/51913/2025/8/M\%C3\%A9t\%C3\%A9o-historique-en-ao\%C3\%BBt-2025-\%C3\%A0-Grenoble-France}{Relevés Météorologiques : fr.weatherspark.com}
+    \item \href{https://monclubhouse.ffr.fr/clubs/u-s-deux-ponts/competitions/auvergne-rhone-alpes-regionale-1-championnat-territorial/qualification-44337/calendrier-resultats}{FFR : US 2 Ponts - Calendrier}
+    \item \href{https://github.com/egohory/plan-experience}{Github : projet python de génération des graphiques ANOVA 2}
+    \item Excel de travail : "/annexes/analyse\_releve\_presence.xlsx"
+    \item Relevés météorologiques : "/annexes/releves\_meteo.xlsx"
+    \item Pointage des entrainements : "/annexes/Entrainement\_saison\_2025-2026\_US2Ponts.xls"
+  \end{enumerate}
+
 
 \end{document}
