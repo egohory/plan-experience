@@ -6,18 +6,18 @@ import statsmodels.api as sm
 from statsmodels.formula.api import ols
 
 '''
-    P : Numéro d'expérience
-    D : Jour d'entrainement, mardi ou jeudi (1 ou -1)
-    W : Météo, beau temps ou pluie (1 ou -1)
-    T : Température pendant l'entrainement, chaud (>10°C) ou froid (<10°C) (1 ou -1)
-    G : Semaine de match ? Match le dimanche ou repos le dimanche (1 ou -1)
-    Presence : Moyenne des joueurs présents à l'entrainement sur ces jours-là
+P : Numero d'experience
+D : Jour d'entrainement, mardi ou jeudi (1 ou -1)
+W : Meteo, beau temps ou pluie (1 ou -1)
+T : Temperature pendant l'entrainement, chaud (>10 C) ou froid (<=10 C) (1 ou -1)
+G : Semaine de match ? Match le dimanche ou repos le dimanche (1 ou -1)
+Presence : Moyenne des joueurs presents a l'entrainement sur ces jours-la
 '''
-# Lecture du fichier Excel contenant les données de présence
+# Lecture du fichier Excel contenant les donnees de presence
 df = pd.read_excel("data_releves_presence.xlsx")
 
 print(df)
-# Définition de la formule du modèle linéaire avec les interactions
+# Definition de la formule du modele lineaire avec les interactions
 formula = 'Presence ~ D + W + T + G + D:W + D:T + D:G + W:T + W:G + T:G'
 
 # Fit model
@@ -53,7 +53,7 @@ def plot_3d_predictions(model, df, factor_x, factor_y, response_var, num_points=
     ax.set_xlabel(factor_x)
     ax.set_ylabel(factor_y)
     ax.set_zlabel(response_var)
-    ax.set_title(f"Représentation 3D de {response_var} vs {factor_x} et {factor_y}")
+    ax.set_title(f"Representation 3D de {response_var} vs {factor_x} et {factor_y}")
     ax.legend()
     plt.savefig(f"report/plots/3d_plot_{factor_x}_{factor_y}.jpeg", dpi=600)
 
