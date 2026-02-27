@@ -56,10 +56,18 @@ def plot_3d_predictions(model, df, factor_x, factor_y, response_var, num_points=
     ax.set_title(f"Representation 3D de {response_var} vs {factor_x} et {factor_y}")
     ax.legend()
     plt.savefig(f"report/plots/3d_plot_{factor_x}_{factor_y}.jpeg", dpi=600)
-
+def plot_boxplot(df, factor, response_var):
+    plt.figure(figsize=(8, 6))
+    df.boxplot(column=response_var, by=factor)
+    plt.title(f"Boxplot de {response_var} par {factor}")
+    plt.suptitle('')
+    plt.xlabel(factor)
+    plt.ylabel(response_var)
+    plt.savefig(f"report/plots/boxplot_{factor}.jpeg", dpi=600)
 # Appel de la fonction pour chaque paire de facteurs
 factor_list = ['T', 'W', 'D', 'G']
 for i, factor_x in enumerate(factor_list):
     for j, factor_y in enumerate(factor_list):
         if i < j:
             plot_3d_predictions(model, df, factor_x, factor_y, 'Presence')
+    plot_boxplot(df, factor_x, 'Presence')
