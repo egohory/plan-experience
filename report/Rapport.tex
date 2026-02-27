@@ -117,19 +117,34 @@
   \includegraphics[width=1\textwidth, center]{images/v_w.jpg}
   \caption{Analyse des résultats pour le climat/temps observé}\label{fig:figure6}
   \end{figure}
+  Et le script python nous donne le boxplot suivant :
+  \begin{figure}[H]
+  \includegraphics[width=1\textwidth, center]{images/boxplot_W.jpg}
+  \caption{Boxplot de la présence à l'entrainement en fonction du temps observé}\label{fig:figure7}
+  \end{figure}
   De la même manière que pour l'analyse précédente, on observe que la \emph{valeur P} est supérieure à 5\%, ainsi on ne pourra pas conclure d'un lien direct, clair et évident entre le temps du jour de l'entrainement et la présence à l'entrainement. On remarque, tout de même, que la variance par temps pluvieux est très élevée en comparaison des jours de beau temps, ce qui signifie que d'autres facteurs doivent influer sur la présence les jours de pluies tandis que les jours de beaux temps, la présence semble plus stable. 
   \subsection{Température}\label{temp}
   Pour l'analyse de la température, Excel produit le rapport suivant :
   \begin{figure}[H]
   \includegraphics[width=1\textwidth, center]{images/v_t.jpg}
-  \caption{Analyse des résultats pour la température}\label{fig:figure6}
+  \caption{Analyse des résultats pour la température}\label{fig:figure8}
+  \end{figure}
+  Et le script python nous donne le boxplot suivant :
+  \begin{figure}[H]
+  \includegraphics[width=1\textwidth, center]{images/boxplot_T.jpg}
+  \caption{Boxplot de la présence à l'entrainement en fonction de la température}\label{fig:figure9}
   \end{figure}
   L'analyse de la température seule ne montre rien de concluant. La \emph{valeur P} est haute. Aucune différence n'est notable entre les moyennes et les variances des deux états de la température. De ce fait, il est impossible de conclure a un impact significatif de la température sur la présence aux entrainements en tant qu'unique facteur.
   \subsection{Match}
   Enfin, l'analyse Excel pour la variable "Match du dimanche" produit ce rapport :
   \begin{figure}[H]
   \includegraphics[width=1\textwidth, center]{images/v_m.jpg}
-  \caption{Analyse des résultats pour les semaines de match ou non}\label{fig:figure7}
+  \caption{Analyse des résultats pour les semaines de match ou non}\label{fig:figure10}
+  \end{figure}
+  Et le script python nous donne le boxplot suivant :
+  \begin{figure}[H]
+  \includegraphics[width=1\textwidth, center]{images/boxplot_G.jpg}
+  \caption{Boxplot de la présence à l'entrainement en fonction de la présence d'un match le week-end}\label{fig:figure11}
   \end{figure}
   On voit que \textbf{la \emph{valeur P} est inférieur à 5\%} ce qui prouve que l'\textbf{hypothèse H4 est vérifiée} (Voir définition de H4 : \ref{varianceun}). Il y a donc un lien direct entre la présence aux entrainements et les matchs. Au vu des moyennes, il semblerait que l'on puisse admettre que la présence aux entrainements est plus grande et, en considérant les variances, est, aussi, plus stable les semaines de match. 
   \section{Analyse à deux facteurs}
@@ -139,14 +154,14 @@
   Ainsi, grâce aux données récoltées et au script python (voir annexe \ref{annexe2}) on peut générer le graphique suivant :
   \begin{figure}[H]
   \includegraphics[width=1\textwidth, center]{plots/3d\_plot\_T\_W.jpeg}
-  \caption{Influence des conditions météo T et W sur la présence à l'entrainement}\label{fig:figure8}
+  \caption{Influence des conditions météo T et W sur la présence à l'entrainement}\label{fig:figure12}
   \end{figure}
   Graphiquement, on voit que, effectivement il semble y avoir plus de monde aux entrainements lorsqu'il fait beau et chaud (T = 1, W = 1) en comparaison des jours froids et pluvieux ou même simplement pluvieux. Cependant, on note que les points des résultats d'expériences des jours pluvieux (W = -1) sont très éparpillés (écart type élevé). Ce qui signifie qu'un ou plusieurs autre(s) paramètre(s) doit(vent) influer sur les résultats par temps pluvieux.
   \subsection{Intempéries et jour d'entrainement}
   Nous vennons de voir que les jours pluvieux donnent des moyennes qui semblent influencées par un autre paramètre. C'est pourquoi, nous allons regarder les moyennes de présence en fonction des intempéries (W) et du jour de la semaine (D). 
   \begin{figure}[H]
   \includegraphics[width=1\textwidth, center]{plots/3d\_plot\_W\_D.jpeg}
-  \caption{Influence des intempéries W et du Jour d'entrainement D sur la présence à l'entrainement}\label{fig:figure9}
+  \caption{Influence des intempéries W et du Jour d'entrainement D sur la présence à l'entrainement}\label{fig:figure13}
   \end{figure}
   On voit que les résultats de moyenne de présence sont relativement stables les jours de beaux temps (W = 1) mais les mardis pluvieux présentent des résultats très variés avec notamment 2 expériences aux résultats très faibles, et une expérience correcte (aux alentours de 32 personnes).
   \paragraph{}Il y a donc un aspect qui repousse les joueurs les mardis pluvieux mais dans certains cas, que nous ne pouvons pas déterminer avec ce graphe, ils viennent tout de même à l'entrainement sous ces conditions.
@@ -154,14 +169,14 @@
   Nous allons maintenant nous interesser à la présence aux entrainements en fonction des semaines de match (G) et du jour de la semaine (D). L'intérêt est d'observer si les joueurs sont plus ou moins présents pour préparer les matchs et si il y a une différence entre un jeudi (D = -1) et un mardi (D = 1). Le but étant de tenter de trouver des explications à la conclusion de l'analyse précédente.
   \begin{figure}[H]
   \includegraphics[width=1\textwidth, center]{plots/3d\_plot\_D\_G.jpeg}
-  \caption{Influence du Jour d'entrainement D et du Match le week-end G sur la présence à l'entrainement}\label{fig:figure10}
+  \caption{Influence du Jour d'entrainement D et du Match le week-end G sur la présence à l'entrainement}\label{fig:figure14}
   \end{figure}
   On pouvait s'y attendre mais on remarque que, en moyenne, les mardis sans match sont délaissés par les joueurs tandis que les jeudis d'avant matchs sont plébiscités. Observation plus surprenante, il apparait que les jeudis sans matchs comptent pratiquement autant de joueurs que les mardis de préparation de match et ce, avec la même stabilité (dispertions des points similaires).
   \subsection{Intempéries et préparation de match}
   Nous venons de voir que les entrainements du mardi hors préparation de match semblaient délaissés (en moyenne). On a pu aussi constater que les intempéries semblaient impacter la présence sans pouvoir distinguer de lien évident mais que les entrainements des mardis pluivieux semblaient moins interesser les joueurs que les autres jours sous d'autres conditions. Nous allons alors, voir l'influence d'une préparation de match (G) et des intempéries (W) sur la présence aux entrainements. 
   \begin{figure}[H]
   \includegraphics[width=1\textwidth, center]{plots/3d\_plot\_W\_G.jpeg}
-  \caption{Influence du Climat/Intempéries W et du Match le week-end G sur la présence à l'entrainement}\label{fig:figure11}
+  \caption{Influence du Climat/Intempéries W et du Match le week-end G sur la présence à l'entrainement}\label{fig:figure15}
   \end{figure}
   On voit que la combinaison du mauvais temps (W = -1) et de l'absence de jour de match (G = -1) présente les pires résultats moyens avec une variance élevée. Les trois autres combinaisons donnent des résultats similaires avec une variance un peu plus élevée pour le mauvais temps. 
   \paragraph{}Il semble alors, correct de dire que les intempéries, est un facteur limitant la présence à l'entrainement lorsqu'il est associé à d'autre facteur tel que l'absence de match le week-end et le jour de la semaine (mardis).
@@ -176,7 +191,7 @@
   Exemple de l'excel de travail des données (Voir source \ref{sources}) :
   \begin{figure}[H]
     \includegraphics[width=1\textwidth, center]{images/exemple\_releve\_presence.jpg}
-    \caption{Extract de l'Excel de pointage des joueurs à l'entrainement}\label{fig:figure12}
+    \caption{Extract de l'Excel de pointage des joueurs à l'entrainement}\label{fig:figure16}
     \end{figure}
   \section{Annexe 2 : Code Python}\label{annexe2}
   Code Python utilisé pour générer les graphiques (Voir git hub : \ref{sources}): 
