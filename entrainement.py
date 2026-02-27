@@ -56,7 +56,7 @@ def plot_3d_predictions(model, df, factor_x, factor_y, response_var, num_points=
     ax.set_title(f"Representation 3D de {response_var} vs {factor_x} et {factor_y}")
     ax.legend()
     plt.savefig(f"report/plots/3d_plot_{factor_x}_{factor_y}.jpeg", dpi=600)
-#Création des boxplots
+#Creation des boxplots
 def plot_boxplot(df, factor, response_var):
     plt.figure(figsize=(8, 6))
     df.boxplot(column=response_var, by=factor)
