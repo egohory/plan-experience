@@ -68,7 +68,7 @@
   Le calendrier des matchs est facilement accessiblement via les sites de la fédération française de rugby (lien en chapitre \ref{sources}). Un match le 1er février fait considérer les entrainements du jeudi 29 et mardi 27 janvier comme étant des préparations de match (G = oui dans le plan factoriel, figure \ref{fig:figure1}).
   \section{Démarche}\label{demarche}
   Afin d'analyser les résultats obtenus, les expériences seront mises en forme dans un plan factiorel. Dans un second temps, les données de ce plan seront codées.\paragraph{}Les variances à un facteur seront analysées grâce aux outils d'Excel pour chaque variable. Ainsi nous pourrons rechercher d'éventuels liens de cause à effet direct entre un facteur et le résultat ou exclure les variables qui ne semblent pas pertinentes. A cette occasion nous ferons des tests d'hypothèses. Celles-ci seront définis au début de la partie \ref{varianceun}
-  \paragraph{}Puis, nous utiliserons un script python afin de générer des graphiques de variances à deux facteurs (ANOVA à deux facteurs) pour permettre une analyse graphique des influences des facteurs deux à deux. Ce script python est accessible en \emph{Annexe 2 : \ref{annexe2}}
+  \paragraph{}Puis, nous utiliserons un script python afin de générer des boxplots de chaque facteur et des graphiques de variances à deux facteurs (ANOVA à deux facteurs) pour permettre une analyse graphique des influences des facteurs deux à deux. Ce script python est accessible en \emph{Annexe 2 : \ref{annexe2}}
 
   \chapter{Résultats}
   \section{Plan Factoriel}\label{pf}
@@ -104,13 +104,18 @@
   \includegraphics[width=1\textwidth, center]{images/v_d.jpg}
   \caption{Analyse des résultats pour le jour d'entrainement}\label{fig:figure4}
   \end{figure}
+  Et le script python nous donne le boxplot suivant :
+  \begin{figure}[H]
+  \includegraphics[width=1\textwidth, center]{images/boxplot_D.jpg}
+  \caption{Boxplot de la présence à l'entrainement en fonction du jour d'entrainement}\label{fig:figure5}
+  \end{figure}
   On remarque aisément que la présence à l'entrainement est supérieure les jeudis aux mardis. De plus, la variance de présence des jeudis est bien plus petite que celle des mardis. Ce qui signifie que, non seulement il y a plus de monde aux entrainements les jeudis mais aussi que la présence est plus stable ces jours en comparaison aux mardis. 
   \paragraph{}En revanche, la \emph{valeur P} est bien supérieure à 5\% (\emph{Probabilité = 16,04\%}) on ne peut donc pas rejeter l'\textbf{Hypothèse Nulle} ce qui signifie qu'il n'y a pas suffisament de preuve pour pouvoir affirmer qu'il y ait une différence significative entre le mardi et le jeudi sur le taux de présence aux entrainements. On peut simplement dire, qu'il semble avoir un impact du jour de la semaine sur le nombre de joueurs aux entrainements mais que cet impact, à lui seul, n'est pas significatif.
   \subsection{Climat/Temps observé}\label{climat}
   L'analyse des données d'expériences pour le temps observé par Excel donne le résultats suivant :
   \begin{figure}[H]
   \includegraphics[width=1\textwidth, center]{images/v_w.jpg}
-  \caption{Analyse des résultats pour le climat/temps observé}\label{fig:figure5}
+  \caption{Analyse des résultats pour le climat/temps observé}\label{fig:figure6}
   \end{figure}
   De la même manière que pour l'analyse précédente, on observe que la \emph{valeur P} est supérieure à 5\%, ainsi on ne pourra pas conclure d'un lien direct, clair et évident entre le temps du jour de l'entrainement et la présence à l'entrainement. On remarque, tout de même, que la variance par temps pluvieux est très élevée en comparaison des jours de beau temps, ce qui signifie que d'autres facteurs doivent influer sur la présence les jours de pluies tandis que les jours de beaux temps, la présence semble plus stable. 
   \subsection{Température}\label{temp}
