@@ -110,7 +110,7 @@
       \end{figure}
     \section{Analyse des variances à un facteur et hypothèses}\label{varianceun}
       Pour cette partie, nous lancerons des analyses de variances à un facteur sur toutes les variables testées par ces expériences pour essayer de trouver les facteurs les plus impactant sur le taux de présence à l'entrainement. 
-      \paragraph{}On vérifiera aussi la \emph{valeur P} de chaque paramètres pour tester l'hypothèse que le paramètre étudié a un impact direct qur le taux de présence. Il faudra alors, s'assurer que la \emph{valeur P} (aussi appelée \emph{Probabilité} ou \emph{P value}) soit inférieur à 5\% pour pouvoir rejeter l'\textbf{Hypothèse Nulle} qui stipule que le lien entre le paramètre d'entrée et le résultat n'est pas évident. Ainsi, voici, les quatres hypothèses qui seront testées:
+      \paragraph{}On vérifiera aussi la \emph{valeur P} de chaque paramètres pour tester l'hypothèse que le paramètre étudié a un impact direct sur le taux de présence. Il faudra alors, s'assurer que la \emph{valeur P} (aussi appelée \emph{Probabilité} ou \emph{P value}) soit inférieur à 5\% pour pouvoir rejeter l'\textbf{Hypothèse Nulle} qui stipule que le lien entre le paramètre d'entrée et le résultat n'est pas évident. Ainsi, voici, les quatres hypothèses qui seront testées:
       \begin{enumerate}
         \item H1: Il existe un lien direct entre la présence à l'entrainement et le jour d'entrainement.
         \item H2: Il existe un lien direct entre le climat/les intempéries du jour de l'entrainement et la présence à l'entrainement.
@@ -128,8 +128,8 @@
         \includegraphics[width=1\textwidth, center]{plots/boxplot_D.jpeg}
         \caption{Boxplot de la présence à l'entrainement en fonction du jour d'entrainement}\label{fig:figure5}
       \end{figure}
-      On remarque aisément que la présence à l'entrainement est supérieure les jeudis aux mardis. De plus, et le boxplot le montre parfaitement, la variance de présence des jeudis est bien plus petite que celle des mardis. Ce qui signifie que, non seulement il y a plus de monde aux entrainements les jeudis mais aussi que la présence est plus stable ces jours en comparaison aux mardis. 
-      \paragraph{}En revanche, la \emph{valeur P} est bien supérieure à 5\% (\emph{Probabilité = 16,04\%}) on ne peut donc pas rejeter l'\textbf{Hypothèse Nulle} ce qui signifie qu'il n'y a pas suffisament de preuve pour pouvoir affirmer qu'il y ait une différence significative entre le mardi et le jeudi sur le taux de présence aux entrainements. On peut simplement dire, qu'il semble avoir un impact du jour de la semaine sur le nombre de joueurs aux entrainements mais que cet impact, à lui seul, n'est pas significatif.
+      On remarque aisément que la présence à l'entrainement est supérieure les jeudis aux mardis. De plus, et le boxplot \ref{fig:figure5} le montre parfaitement, la variance de présence des jeudis est bien plus petite que celle des mardis. Ce qui signifie que, non seulement il y a plus de monde aux entrainements les jeudis mais aussi que la présence est plus stable ces jours en comparaison aux mardis. 
+      \paragraph{}En revanche, comme on peut le voir sur la figure \ref{fig:figure4}, la \emph{valeur P} est bien supérieure à 5\% (\emph{Probabilité = 16,04\%}) on ne peut donc pas rejeter l'\textbf{Hypothèse Nulle} ce qui signifie qu'il n'y a pas suffisament de preuve pour pouvoir affirmer qu'il y ait une différence significative entre le mardi et le jeudi sur le taux de présence aux entrainements. On peut simplement dire, qu'il semble avoir un impact du jour de la semaine sur le nombre de joueurs aux entrainements mais que cet impact, à lui seul, n'est pas significatif.
     \subsection{Climat/Temps observé}\label{climat}
       L'analyse des données d'expériences pour le temps observé par Excel donne le résultats suivant:
       \begin{figure}[H]
@@ -141,7 +141,7 @@
         \includegraphics[width=1\textwidth, center]{plots/boxplot_W.jpeg}
         \caption{Boxplot de la présence à l'entrainement en fonction du temps observé}\label{fig:figure7}
       \end{figure}
-      De la même manière que pour l'analyse précédente, on observe, grâce aux calculs, que la \emph{valeur P} est supérieure à 5\%, ainsi on ne pourra pas conclure d'un lien direct, clair et évident entre le temps du jour de l'entrainement et la présence à l'entrainement. Cependant, on voit, assez simplement grâce au graphique, que la variance par temps pluvieux est très élevée en comparaison des jours de beau temps, ce qui signifie que d'autres facteurs doivent influer sur la présence les jours de pluies tandis que les jours de beaux temps, la présence semble plus stable. 
+      De la même manière que pour l'analyse précédente, on observe, grâce aux calculs figure \ref{fig:figure6}, que la \emph{valeur P} est supérieure à 5\%, ainsi on ne pourra pas conclure d'un lien direct, clair et évident entre le temps du jour de l'entrainement et la présence à l'entrainement. Cependant, on voit, assez simplement grâce au graphique \ref{fig:figure7}, que la variance par temps pluvieux est très élevée en comparaison des jours de beau temps, ce qui signifie que d'autres facteurs doivent influer sur la présence les jours de pluies tandis que les jours de beaux temps, la présence semble plus stable. 
     \subsection{Température}\label{temp}
       Pour l'analyse de la température, Excel produit le rapport suivant:
       \begin{figure}[H]
@@ -153,7 +153,7 @@
         \includegraphics[width=1\textwidth, center]{plots/boxplot_T.jpeg}
         \caption{Boxplot de la présence à l'entrainement en fonction de la température}\label{fig:figure9}
       \end{figure}
-      L'analyse de la température seule ne montre rien de concluant. En effet, la \emph{valeur P} est très haute (~35\%). Aussi, même si on note une très légère différence sur les moyennes (3 joueurs de plus en moyenne par temps \emph{chauds}), les variances des deux états de la température sont identiques. De ce fait, il est complexe de conclure a un impact significatif de la température sur la présence aux entrainements en tant que facteur direct.
+      L'analyse de la température seule ne montre rien de concluant. En effet, la \emph{valeur P} est très haute (~35\%), comme le montre la figure \ref{fig:figure8}. Aussi, même si on note une très légère différence sur les moyennes (3 joueurs de plus en moyenne par temps \emph{chauds}), les variances des deux états de la température sont identiques. De ce fait, il est complexe de conclure a un impact significatif de la température sur la présence aux entrainements en tant que facteur direct.
     \subsection{Match}
       Enfin, l'analyse Excel pour la variable "Match du dimanche" produit ce rapport:
       \begin{figure}[H]
@@ -165,7 +165,7 @@
         \includegraphics[width=1\textwidth, center]{plots/boxplot_G.jpeg}
         \caption{Boxplot de la présence à l'entrainement en fonction de la présence d'un match le week-end}\label{fig:figure11}
       \end{figure}
-      On voit que \textbf{la \emph{valeur P} est inférieur à 5\%} ce qui prouve que l'\textbf{hypothèse H4 est vérifiée} (Voir définition de H4: \ref{varianceun}). Il y a donc un lien direct entre la présence aux entrainements et les matchs. Au vu des moyennes, il semblerait que l'on puisse admettre que la présence aux entrainements est plus grande et, en considérant les variances, est, aussi, plus stable les semaines de match. 
+      Sur le calcul figure \ref{fig:figure10}, on constate que \textbf{la \emph{valeur P} est inférieur à 5\%} ce qui prouve que l'\textbf{hypothèse H4 est vérifiée} (Voir définition de H4: \ref{varianceun}). Il y a donc un lien direct entre la présence aux entrainements et les matchs. Au vu des moyennes, il semblerait que l'on puisse admettre que la présence aux entrainements est plus grande et, en considérant les variances, est, aussi, plus stable les semaines de match. 
     \section{Analyse à deux facteurs}
       \subsection{Météo complète}
         Dans cette partie nous observerons la présence à l'entrainement en fonction des conditions météo complète (température et temps).
